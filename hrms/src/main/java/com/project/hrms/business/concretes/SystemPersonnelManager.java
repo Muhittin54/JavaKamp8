@@ -69,9 +69,9 @@ public class SystemPersonnelManager implements SystemPersonnelService {
 	}
 
 	@Override
-	public DataResult<List<SystemPersonnel>> getByDepartmentId(int department) {
+	public DataResult<List<SystemPersonnel>> getByDepartmentId(int departmentId) {
 		return new SuccessDataResult<List<SystemPersonnel>>
-		(this.systemPersonnelDao.getByDepartment(department), "Secilen departmana gore sistem personelleri listelendi.");
+		(this.systemPersonnelDao.getByDepartment(departmentId), "Secilen departmana gore sistem personelleri listelendi.");
 	}
 
 	@Override

@@ -30,6 +30,16 @@ public class JopPostingController {
 	public DataResult<List<JobPosting>> getAll() {
 		return this.jobPostingService.getAll();
 	}
+	
+	@GetMapping("/getAllPageable")
+	public DataResult<List<JobPosting>> getAll(@RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize){
+		return this.jobPostingService.getAll(pageNo, pageSize);
+	}
+	
+	@GetMapping("/getalldesc")
+	public DataResult<List<JobPosting>> getAllSorted(){
+		return this.jobPostingService.getAllSorted();
+	}
 
 	@PostMapping("/add")
 	public Result add(@RequestBody JobPosting jobPosting) {
@@ -37,22 +47,22 @@ public class JopPostingController {
 	}
 
 	@GetMapping("/getByStatus")
-	public DataResult<List<JobPosting>> getByStatus(boolean status) {
+	public DataResult<List<JobPosting>> getByStatus(@RequestParam boolean status) {
 		return this.jobPostingService.getByStatus(status);
 	}
 
 	@GetMapping("/getByStatusOrderByReleaseDateDesc")
-	public DataResult<List<JobPosting>> getByStatusOrderByReleaseDateDesc(boolean status) {
+	public DataResult<List<JobPosting>> getByStatusOrderByReleaseDateDesc(@RequestParam boolean status) {
 		return this.jobPostingService.getByStatusOrderByReleaseDateDesc(status);
 	}
 
 	@GetMapping("/getByStatusAndCompanyName")
-	public DataResult<List<JobPosting>> getBySatatusAndCompanyName(boolean status, String companyName) {
+	public DataResult<List<JobPosting>> getBySatatusAndCompanyName(@RequestParam("status") boolean status, @RequestParam("companyName") String companyName) {
 		return this.jobPostingService.getByStatusAndCompanyName(status, companyName);
 	}
 
 	@PutMapping("/updateJobPostingStatus")
-	public Result updateJobPostingStatus(@RequestParam boolean status, @RequestParam int id) {
+	public Result updateJobPostingStatus(@RequestParam("status") boolean status, @RequestParam("id") int id) {
 		return this.updateJobPostingStatus(status, id);
 	}
 }

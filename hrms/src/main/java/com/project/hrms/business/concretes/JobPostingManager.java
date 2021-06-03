@@ -3,6 +3,9 @@ package com.project.hrms.business.concretes;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.project.hrms.business.abstracts.JobPostingService;
@@ -31,6 +34,18 @@ public class JobPostingManager implements JobPostingService {
 	public DataResult<List<JobPosting>> getAll() {
 		return new SuccessDataResult<List<JobPosting>>
 		(this.jobPostingDao.findAll(), "Tum is ilanları listelendi");
+	}
+	
+	@Override
+	public DataResult<List<JobPosting>> getAll(int pageNo, int pageSize) {
+		Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAll(pageable).getContent());
+	}
+	
+	@Override
+	public DataResult<List<JobPosting>> getAllSorted() {
+		Sort sort = Sort.by(Sort.Direction.DESC, "release_date");
+		return new SuccessDataResult<List<JobPosting>>(this.jobPostingDao.findAll(sort));
 	}
 
 	@Override

@@ -48,7 +48,7 @@ public class SystemPersonnelController {
 	}
 	
 	@PutMapping("/staffApproval")
-	public Result staffApproval(@RequestParam boolean isActive, @RequestParam int id) {
+	public Result staffApproval(@RequestParam("isActive") boolean isActive, @RequestParam("id") int id) {
 		return this.systemPersonnelService.staffApproval(isActive, id);
 	}
 }

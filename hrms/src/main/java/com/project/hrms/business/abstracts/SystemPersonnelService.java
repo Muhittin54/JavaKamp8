@@ -17,7 +17,7 @@ public interface SystemPersonnelService {
 	
 	DataResult<SystemPersonnel> getByEmail(String email);
 	
-	DataResult<List<SystemPersonnel>> getByDepartmentId(int department);
+	DataResult<List<SystemPersonnel>> getByDepartmentId(int departmentId);
 	
 	DataResult<List<SystemPersonnel>> getByDepartmentIdIn(List<Integer> departments);
 }

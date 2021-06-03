@@ -13,7 +13,7 @@ public interface SystemPersonnelDao extends JpaRepository<SystemPersonnel, Integ
 	
 	SystemPersonnel getByEmail(String email);
 	
-	List<SystemPersonnel> getByDepartment(int department);
+	List<SystemPersonnel> getByDepartment(int departmentId);
 	
 	List<SystemPersonnel> getByDepartmentIn(List<Integer> departments);
 	

@@ -10,6 +10,10 @@ public interface JobPostingService {
 	Result add(JobPosting jobPosting);
 
 	DataResult<List<JobPosting>> getAll();
+	
+	DataResult<List<JobPosting>> getAllSorted();
+	
+	DataResult<List<JobPosting>> getAll(int pageNo, int pageSize);
 
 	DataResult<JobPosting> getById(int id);
 
